@@ -1,0 +1,197 @@
+#server:
+#  port: 8092  
+#
+#spring:
+#  application:
+#    name: order-service
+#
+#  cloud:
+#    config:
+#      enabled: false
+#
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/inventorydb
+#    username: root
+#    password: maniSH@1430
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#
+#  kafka:
+#    bootstrap-servers: localhost:9092
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#
+
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      inventoryService:
+#        registerHealthIndicator: true
+#        slidingWindowSize: 5
+#        minimumNumberOfCalls: 3
+#        failureRateThreshold: 50
+#        waitDurationInOpenState: 10s
+#
+#  retry:
+#    instances:
+#      inventoryService:
+#        maxAttempts: 3
+#        waitDuration: 1s
+#
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#
+#  endpoint:
+#    health:
+#      show-details: always
+#
+
+#  observations:
+#    http:
+#      server:
+#        requests:
+#          enabled: true
+#
+#  tracing:
+#    enabled: true
+#    sampling:
+#      probability: 1.0
+#
+#  zipkin:
+#    tracing:
+#      endpoint: http://localhost:9411/api/v2/spans
+#
+
+#logging:
+#  level:
+#    io.micrometer.observation: DEBUG
+#    io.micrometer.observation.transport: DEBUG
+#    io.micrometer.tracing: DEBUG
+#    io.micrometer.tracing.handler: DEBUG
+#    io.zipkin.reporter2: DEBUG
+#    brave.Tracer: DEBUG
+#    brave: DEBUG
+#
+#  
+#    com.inventory.order.feign: DEBUG
+#    feign: DEBUG
+#    feign.Logger: DEBUG
+#
+#   
+#    io.github.resilience4j: DEBUG
+#
+#    
+#    org.springframework.web.client: DEBUG
+#    org.springframework.cloud.openfeign: DEBUG
+
+server:
+  port: 8092
+
+spring:
+  application:
+    name: order-service
+
+  
+  config:
+    import: ""
+
+  cloud:
+    config:
+      enabled: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/inventorydb
+    username: root
+    password: maniSH@1430
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      inventoryService:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+
+  retry:
+    instances:
+      inventoryService:
+        maxAttempts: 3
+        waitDuration: 1s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
+
+  observations:
+    http:
+      server:
+        requests:
+          enabled: true
+
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+logging:
+  level:
+    root: INFO
+    io.micrometer.observation: DEBUG
+    io.micrometer.tracing: DEBUG
+    io.micrometer.tracing.handler: DEBUG
+    io.zipkin.reporter2: DEBUG
+    brave: DEBUG
+    brave.Tracer: DEBUG
+
+   
+    com.inventory.order.feign: DEBUG
+    feign: DEBUG
+    feign.Logger: DEBUG
+
+    io.github.resilience4j: DEBUG
+
+    org.springframework.web.client: DEBUG
+    org.springframework.cloud.openfeign: DEBUG

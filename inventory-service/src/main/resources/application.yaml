@@ -1,0 +1,39 @@
+server:
+  port: 8093
+
+spring:
+  application:
+    name: inventory-service
+
+  cloud:
+    config:
+      enabled: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/inventorydb
+    username: root
+    password: maniSH@1430
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  eureka:
+    client:
+      service-url:
+        defaultzone:  http://localhost:8761/eureka
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0   
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+logging:
+  level:
+    io.micrometer.tracing: DEBUG
+    brave: DEBUG
